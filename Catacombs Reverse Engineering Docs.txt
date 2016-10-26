@@ -97,3 +97,20 @@ Multicolor
 53284 V+36 - Side Wall((
 
 
+Line 280 -- SYS 828
+SYS 828,
+
+- Save Accumulator to $04
+- $C0 + ADC $00 (192 + 0)               -ADD $00 to Accumulator ($C0 + 0) = 192+0
+- Store Accumulator to $05
+- JSR $B79B				-CHRGET Kernal Routine
+- X-Register compare to 0               -Keyboard Buffer empty (?)
+- if yes jump to $0362 (866 dec.)       
+- Load Accu-Value in $04 
+- CLC    				-Clear Carry Flag
+- Add with Carry #$50   		- Accumulator + 80 (decimal)
+- Save Akku to $04
+:loop
+- Load $05 in Accu		-(192 + 0)
+- decrement x-Register
+- If <> 0 jump to loop (Dekrement till X=0)
